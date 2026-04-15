@@ -1,13 +1,16 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "etchebarne.net" },
+    { name: "description", content: "etchebarne.net" },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <div className="flex items-center justify-center min-h-screen px-6">
+      <img src="/logo/etchebarne-logo.svg" alt="etchebarne.net" className="w-full max-w-xs select-none pointer-events-none" draggable={false} />
+    </div>
+  );
 }
