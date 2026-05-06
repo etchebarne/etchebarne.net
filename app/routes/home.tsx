@@ -1,9 +1,26 @@
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "etchebarne.net";
+  const description =
+    "etchebarne.net builds friendly, high-quality Linux tools that make everyday computing more approachable for regular users.";
+  const url = "https://etchebarne.net";
+  const image = `${url}/logo/etchebarne-logo.svg`;
+
   return [
-    { title: "etchebarne.net" },
-    { name: "description", content: "etchebarne.net project" },
+    { title },
+    { name: "description", content: description },
+    { name: "robots", content: "index, follow" },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: url },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: image },
+    { property: "og:site_name", content: "etchebarne.net" },
+    { name: "twitter:card", content: "summary" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
   ];
 }
 
