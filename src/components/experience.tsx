@@ -177,10 +177,10 @@ const List = () => (
 );
 
 export const Experience = () => (
-  <section id="experience" className="scroll-mt-20 py-32">
+  <section id="experience" className="scroll-mt-20 py-24 sm:py-32">
     <div className="mx-auto w-full max-w-6xl px-6">
       <h2 className="text-sm text-muted-foreground">Experience</h2>
-      <div className="relative isolate mt-8 border bg-background p-6 sm:p-8">
+      <div className="relative isolate -mx-6 mt-8 border-y bg-background p-6 sm:mx-0 sm:border sm:p-8">
         <Chart />
         <List />
       </div>

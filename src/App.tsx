@@ -11,8 +11,8 @@ const YEAR = new Date().getFullYear();
 const Hero = () => (
   <section className="relative flex h-svh items-end">
     <h1 className="sr-only">{site.name}</h1>
-    <div className="mx-auto w-full max-w-6xl px-6 pb-20 sm:pb-24">
-      <p data-hero-copy className="text-lg/7">
+    <div className="mx-auto w-full max-w-6xl px-6 pb-28 sm:pb-24">
+      <p data-hero-copy className="text-3xl/9 tracking-tight sm:text-lg/7 sm:tracking-normal">
         <span className="block text-foreground">{site.author}</span>
         <span className="block text-muted-foreground">{site.role}</span>
       </p>
@@ -21,10 +21,14 @@ const Hero = () => (
 );
 
 const Projects = () => (
-  <section id="projects" className="scroll-mt-20 py-32">
+  <section id="projects" className="scroll-mt-20 py-24 sm:py-32">
     <div className="mx-auto w-full max-w-6xl px-6">
-      <h2 className="text-sm text-muted-foreground">Projects</h2>
-      <div className="mt-8 grid gap-6 md:grid-cols-2">
+      <h2 className="flex justify-between text-sm text-muted-foreground">
+        Projects
+        <span className="font-mono text-xs tabular-nums sm:hidden">{String(projects.length).padStart(2, "0")}</span>
+      </h2>
+      {/* Phones swipe through the projects, the next one peeking in; from sm up it's a grid. */}
+      <div className="-mx-6 mt-8 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto overscroll-x-contain px-6 [scrollbar-width:none] sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 md:grid-cols-2">
         {projects.map((project, index) => (
           <a
             key={project.name}
@@ -33,10 +37,10 @@ const Projects = () => (
             rel="noreferrer"
             // With an odd count, the first entry spans the row so the grid stays even.
             data-wide={projects.length % 2 === 1 && index === 0 ? "" : undefined}
-            className="group flex flex-col border bg-background transition-[border-color] duration-200 ease-out-strong hover:border-foreground/40 focus-visible:border-foreground focus-visible:outline-none data-wide:md:col-span-2"
+            className="group flex w-[85%] shrink-0 snap-start flex-col border bg-background sm:w-auto transition-[border-color] duration-200 ease-out-strong hover:border-foreground/40 focus-visible:border-foreground focus-visible:outline-none data-wide:md:col-span-2"
           >
             {project.cover && (
-              <div className="relative h-72 overflow-hidden border-b sm:h-80 group-data-wide:sm:h-[26rem]">
+              <div className="relative aspect-square overflow-hidden border-b sm:aspect-auto sm:h-80 group-data-wide:sm:h-[26rem]">
                 <DitherShader field={COVER_FIELDS[project.cover]} stillTime={6} className="absolute inset-0" />
               </div>
             )}
@@ -70,12 +74,12 @@ const SOCIAL_ICONS: Record<(typeof site.socials)[number]["label"], { path: strin
 };
 
 const About = () => (
-  <section id="about" className="scroll-mt-20 py-32">
+  <section id="about" className="scroll-mt-20 py-24 sm:py-32">
     <div className="mx-auto w-full max-w-6xl px-6">
       <h2 className="text-sm text-muted-foreground">About</h2>
 
       {/* Who I am on the left, what I believe on the right. Same panel as Experience. */}
-      <div className="mt-8 border bg-background p-6 sm:p-8">
+      <div className="-mx-6 mt-8 border-y bg-background p-6 sm:mx-0 sm:border sm:p-8">
       <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
         <div className="space-y-5 text-base/7 text-pretty text-foreground/75 lg:col-span-4 lg:text-lg/8">
           {site.intro.map((paragraph) => (
@@ -125,7 +129,7 @@ const About = () => (
 // The last screen: the mark reassembles behind this in the field.
 const Coda = () => (
   <section id="coda" className="relative flex h-svh items-end">
-    <div className="mx-auto w-full max-w-6xl px-6 pb-20 text-sm text-muted-foreground">
+    <div className="mx-auto w-full max-w-6xl px-6 pb-28 text-sm text-muted-foreground sm:pb-20">
       © {YEAR} {site.name}
     </div>
   </section>
